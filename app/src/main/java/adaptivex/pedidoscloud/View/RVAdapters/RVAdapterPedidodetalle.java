@@ -9,8 +9,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.example.ezequiel.pedidoscloud.Model.Pedidodetalle;
-import com.example.ezequiel.pedidoscloud.R;
+import adaptivex.pedidoscloud.Model.Pedidodetalle;
+import adaptivex.pedidoscloud.R;
 
 import java.util.List;
 
