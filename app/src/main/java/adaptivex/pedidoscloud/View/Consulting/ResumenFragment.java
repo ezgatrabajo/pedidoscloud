@@ -11,11 +11,11 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.ezequiel.pedidoscloud.Config.GlobalValues;
-import com.example.ezequiel.pedidoscloud.Controller.ClienteController;
-import com.example.ezequiel.pedidoscloud.Controller.PedidoController;
-import com.example.ezequiel.pedidoscloud.Controller.ProductoController;
-import com.example.ezequiel.pedidoscloud.R;
+import adaptivex.pedidoscloud.Config.GlobalValues;
+import adaptivex.pedidoscloud.Controller.ClienteController;
+import adaptivex.pedidoscloud.Controller.PedidoController;
+import adaptivex.pedidoscloud.Controller.ProductoController;
+import adaptivex.pedidoscloud.R;
 
 /**
  * A simple {@link Fragment} subclass.

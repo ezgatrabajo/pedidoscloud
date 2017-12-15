@@ -12,10 +12,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.example.ezequiel.pedidoscloud.Controller.HojarutaController;
-import com.example.ezequiel.pedidoscloud.Model.Hojaruta;
-import com.example.ezequiel.pedidoscloud.R;
-import com.example.ezequiel.pedidoscloud.View.RVAdapters.RVAdapterHojaruta;
+import adaptivex.pedidoscloud.Controller.HojarutaController;
+import adaptivex.pedidoscloud.Model.Hojaruta;
+import adaptivex.pedidoscloud.R;
+import adaptivex.pedidoscloud.View.RVAdapters.RVAdapterHojaruta;
 
 import java.util.ArrayList;
 

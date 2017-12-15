@@ -12,11 +12,11 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Toast;
 
-import com.example.ezequiel.pedidoscloud.Controller.AdaptersListView.MarcaAdapter;
-import com.example.ezequiel.pedidoscloud.Controller.MarcaController;
-import com.example.ezequiel.pedidoscloud.Model.Marca;
-import com.example.ezequiel.pedidoscloud.Model.MarcaDataBaseHelper;
-import com.example.ezequiel.pedidoscloud.R;
+import adaptivex.pedidoscloud.Controller.AdaptersListView.MarcaAdapter;
+import adaptivex.pedidoscloud.Controller.MarcaController;
+import adaptivex.pedidoscloud.Model.Marca;
+import adaptivex.pedidoscloud.Model.MarcaDataBaseHelper;
+import adaptivex.pedidoscloud.R;
 
 import java.util.ArrayList;
 

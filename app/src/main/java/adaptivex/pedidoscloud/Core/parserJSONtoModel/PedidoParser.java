@@ -2,8 +2,8 @@ package adaptivex.pedidoscloud.Core.parserJSONtoModel;
 
 import android.util.Log;
 
-import com.example.ezequiel.pedidoscloud.Model.Pedido;
-import com.example.ezequiel.pedidoscloud.Model.PedidoDataBaseHelper;
+import adaptivex.pedidoscloud.Model.Pedido;
+import adaptivex.pedidoscloud.Model.PedidoDataBaseHelper;
 
 import org.json.JSONObject;
 

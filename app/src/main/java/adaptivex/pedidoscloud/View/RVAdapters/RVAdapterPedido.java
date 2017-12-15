@@ -11,10 +11,10 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.ezequiel.pedidoscloud.Config.GlobalValues;
-import com.example.ezequiel.pedidoscloud.Model.Pedido;
-import com.example.ezequiel.pedidoscloud.R;
-import com.example.ezequiel.pedidoscloud.Servicios.HelperPedidos;
+import adaptivex.pedidoscloud.Config.GlobalValues;
+import adaptivex.pedidoscloud.Model.Pedido;
+import adaptivex.pedidoscloud.R;
+import adaptivex.pedidoscloud.Servicios.HelperPedidos;
 
 import java.util.ArrayList;
 

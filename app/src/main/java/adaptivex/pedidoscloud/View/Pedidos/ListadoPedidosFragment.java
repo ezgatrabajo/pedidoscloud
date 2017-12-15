@@ -11,14 +11,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.example.ezequiel.pedidoscloud.Config.GlobalValues;
-import com.example.ezequiel.pedidoscloud.Controller.ClienteController;
-import com.example.ezequiel.pedidoscloud.Controller.PedidoController;
-import com.example.ezequiel.pedidoscloud.Model.Cliente;
-import com.example.ezequiel.pedidoscloud.Model.Pedido;
-import com.example.ezequiel.pedidoscloud.Model.PedidoDataBaseHelper;
-import com.example.ezequiel.pedidoscloud.R;
-import com.example.ezequiel.pedidoscloud.View.RVAdapters.RVAdapterPedido;
+import adaptivex.pedidoscloud.Config.GlobalValues;
+import adaptivex.pedidoscloud.Controller.ClienteController;
+import adaptivex.pedidoscloud.Controller.PedidoController;
+import adaptivex.pedidoscloud.Model.Cliente;
+import adaptivex.pedidoscloud.Model.Pedido;
+import adaptivex.pedidoscloud.Model.PedidoDataBaseHelper;
+import adaptivex.pedidoscloud.R;
+import adaptivex.pedidoscloud.View.RVAdapters.RVAdapterPedido;
 
 import java.util.ArrayList;
 

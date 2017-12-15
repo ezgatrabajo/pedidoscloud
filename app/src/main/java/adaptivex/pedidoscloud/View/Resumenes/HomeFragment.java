@@ -9,10 +9,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.example.ezequiel.pedidoscloud.Controller.ClienteController;
-import com.example.ezequiel.pedidoscloud.Controller.HojarutaController;
-import com.example.ezequiel.pedidoscloud.Controller.HojarutadetalleController;
-import com.example.ezequiel.pedidoscloud.R;
+import adaptivex.pedidoscloud.Controller.ClienteController;
+import adaptivex.pedidoscloud.Controller.HojarutaController;
+import adaptivex.pedidoscloud.Controller.HojarutadetalleController;
+import adaptivex.pedidoscloud.R;
 
 /**
  * A simple {@link Fragment} subclass.

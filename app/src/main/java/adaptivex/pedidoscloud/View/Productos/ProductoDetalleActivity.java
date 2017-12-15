@@ -8,7 +8,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.TextView;
 
-import com.example.ezequiel.pedidoscloud.R;
+import adaptivex.pedidoscloud.R;
 
 public class ProductoDetalleActivity extends AppCompatActivity {
     TextView tvNombre, tvDescripcion;

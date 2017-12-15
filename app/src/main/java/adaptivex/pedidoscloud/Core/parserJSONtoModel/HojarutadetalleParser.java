@@ -2,8 +2,8 @@ package adaptivex.pedidoscloud.Core.parserJSONtoModel;
 
 import android.util.Log;
 
-import com.example.ezequiel.pedidoscloud.Model.Hojarutadetalle;
-import com.example.ezequiel.pedidoscloud.Model.HojarutadetalleDataBaseHelper;
+import adaptivex.pedidoscloud.Model.Hojarutadetalle;
+import adaptivex.pedidoscloud.Model.HojarutadetalleDataBaseHelper;
 
 import org.json.JSONArray;
 import org.json.JSONObject;

@@ -31,12 +31,12 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import com.example.ezequiel.pedidoscloud.Config.Configurador;
-import com.example.ezequiel.pedidoscloud.Config.GlobalValues;
-import com.example.ezequiel.pedidoscloud.Core.IniciarApp;
-import com.example.ezequiel.pedidoscloud.Core.parserJSONtoModel.UserParser;
-import com.example.ezequiel.pedidoscloud.Model.User;
-import com.example.ezequiel.pedidoscloud.Servicios.WebRequest;
+import adaptivex.pedidoscloud.Config.Configurador;
+import adaptivex.pedidoscloud.Config.GlobalValues;
+import adaptivex.pedidoscloud.Core.IniciarApp;
+import adaptivex.pedidoscloud.Core.parserJSONtoModel.UserParser;
+import adaptivex.pedidoscloud.Model.User;
+import adaptivex.pedidoscloud.Servicios.WebRequest;
 
 import java.util.ArrayList;
 import java.util.HashMap;

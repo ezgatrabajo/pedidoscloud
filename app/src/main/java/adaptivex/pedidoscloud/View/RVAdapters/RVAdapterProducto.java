@@ -11,8 +11,8 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.ezequiel.pedidoscloud.Model.Producto;
-import com.example.ezequiel.pedidoscloud.R;
+import adaptivex.pedidoscloud.Model.Producto;
+import adaptivex.pedidoscloud.R;
 
 import java.util.ArrayList;
 

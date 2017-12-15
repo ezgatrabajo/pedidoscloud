@@ -11,13 +11,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.example.ezequiel.pedidoscloud.Controller.PedidodetalleController;
-import com.example.ezequiel.pedidoscloud.Controller.ProductoController;
-import com.example.ezequiel.pedidoscloud.Model.Pedidodetalle;
-import com.example.ezequiel.pedidoscloud.Model.PedidodetalleDataBaseHelper;
-import com.example.ezequiel.pedidoscloud.Model.Producto;
-import com.example.ezequiel.pedidoscloud.R;
-import com.example.ezequiel.pedidoscloud.View.RVAdapters.RVAdapterPedidodetalle;
+import adaptivex.pedidoscloud.Controller.PedidodetalleController;
+import adaptivex.pedidoscloud.Controller.ProductoController;
+import adaptivex.pedidoscloud.Model.Pedidodetalle;
+import adaptivex.pedidoscloud.Model.PedidodetalleDataBaseHelper;
+import adaptivex.pedidoscloud.Model.Producto;
+import adaptivex.pedidoscloud.R;
+import adaptivex.pedidoscloud.View.RVAdapters.RVAdapterPedidodetalle;
 
 import java.util.ArrayList;
 

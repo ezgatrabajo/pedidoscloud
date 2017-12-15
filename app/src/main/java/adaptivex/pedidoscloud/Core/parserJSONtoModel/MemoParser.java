@@ -2,8 +2,8 @@ package adaptivex.pedidoscloud.Core.parserJSONtoModel;
 
 import android.util.Log;
 
-import com.example.ezequiel.pedidoscloud.Model.Memo;
-import com.example.ezequiel.pedidoscloud.Model.MemoDataBaseHelper;
+import adaptivex.pedidoscloud.Model.Memo;
+import adaptivex.pedidoscloud.Model.MemoDataBaseHelper;
 
 import org.json.JSONArray;
 import org.json.JSONObject;

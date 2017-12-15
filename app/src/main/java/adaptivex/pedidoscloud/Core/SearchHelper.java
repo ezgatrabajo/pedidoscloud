@@ -6,11 +6,11 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.util.Log;
 
-import com.example.ezequiel.pedidoscloud.Config.GlobalValues;
-import com.example.ezequiel.pedidoscloud.Controller.ClienteController;
-import com.example.ezequiel.pedidoscloud.Controller.ProductoController;
-import com.example.ezequiel.pedidoscloud.View.Clientes.ListadoClientesFragment;
-import com.example.ezequiel.pedidoscloud.View.Productos.ListadoProductosFragment;
+import adaptivex.pedidoscloud.Config.GlobalValues;
+import adaptivex.pedidoscloud.Controller.ClienteController;
+import adaptivex.pedidoscloud.Controller.ProductoController;
+import adaptivex.pedidoscloud.View.Clientes.ListadoClientesFragment;
+import adaptivex.pedidoscloud.View.Productos.ListadoProductosFragment;
 
 /**
  * Created by Ezequiel on 15/04/2017.

@@ -12,11 +12,11 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.ezequiel.pedidoscloud.Config.GlobalValues;
-import com.example.ezequiel.pedidoscloud.Controller.PedidoController;
-import com.example.ezequiel.pedidoscloud.Model.Cliente;
-import com.example.ezequiel.pedidoscloud.Model.Pedido;
-import com.example.ezequiel.pedidoscloud.R;
+import adaptivex.pedidoscloud.Config.GlobalValues;
+import adaptivex.pedidoscloud.Controller.PedidoController;
+import adaptivex.pedidoscloud.Model.Cliente;
+import adaptivex.pedidoscloud.Model.Pedido;
+import adaptivex.pedidoscloud.R;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;

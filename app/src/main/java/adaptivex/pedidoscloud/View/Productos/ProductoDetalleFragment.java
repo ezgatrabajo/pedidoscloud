@@ -17,14 +17,14 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.ezequiel.pedidoscloud.Config.GlobalValues;
-import com.example.ezequiel.pedidoscloud.Controller.PedidoController;
-import com.example.ezequiel.pedidoscloud.Controller.PedidodetalleController;
-import com.example.ezequiel.pedidoscloud.Controller.ProductoController;
-import com.example.ezequiel.pedidoscloud.Model.Pedido;
-import com.example.ezequiel.pedidoscloud.Model.Pedidodetalle;
-import com.example.ezequiel.pedidoscloud.Model.Producto;
-import com.example.ezequiel.pedidoscloud.R;
+import adaptivex.pedidoscloud.Config.GlobalValues;
+import adaptivex.pedidoscloud.Controller.PedidoController;
+import adaptivex.pedidoscloud.Controller.PedidodetalleController;
+import adaptivex.pedidoscloud.Controller.ProductoController;
+import adaptivex.pedidoscloud.Model.Pedido;
+import adaptivex.pedidoscloud.Model.Pedidodetalle;
+import adaptivex.pedidoscloud.Model.Producto;
+import adaptivex.pedidoscloud.R;
 
 /**
  * A simple {@link Fragment} subclass.

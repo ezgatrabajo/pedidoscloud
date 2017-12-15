@@ -2,8 +2,8 @@ package adaptivex.pedidoscloud.Core.parserJSONtoModel;
 
 import android.util.Log;
 
-import com.example.ezequiel.pedidoscloud.Model.Marca;
-import com.example.ezequiel.pedidoscloud.Model.MarcaDataBaseHelper;
+import adaptivex.pedidoscloud.Model.Marca;
+import adaptivex.pedidoscloud.Model.MarcaDataBaseHelper;
 
 import org.json.JSONArray;
 import org.json.JSONObject;

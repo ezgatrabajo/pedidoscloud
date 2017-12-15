@@ -14,16 +14,16 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.ezequiel.pedidoscloud.Config.GlobalValues;
-import com.example.ezequiel.pedidoscloud.Controller.ClienteController;
-import com.example.ezequiel.pedidoscloud.Controller.MemoController;
-import com.example.ezequiel.pedidoscloud.Controller.ProductoController;
-import com.example.ezequiel.pedidoscloud.Core.ParameterHelper;
-import com.example.ezequiel.pedidoscloud.Model.Cliente;
-import com.example.ezequiel.pedidoscloud.Model.MarcaDataBaseHelper;
-import com.example.ezequiel.pedidoscloud.Model.Producto;
-import com.example.ezequiel.pedidoscloud.R;
-import com.example.ezequiel.pedidoscloud.View.RVAdapters.RVAdapterProducto;
+import adaptivex.pedidoscloud.Config.GlobalValues;
+import adaptivex.pedidoscloud.Controller.ClienteController;
+import adaptivex.pedidoscloud.Controller.MemoController;
+import adaptivex.pedidoscloud.Controller.ProductoController;
+import adaptivex.pedidoscloud.Core.ParameterHelper;
+import adaptivex.pedidoscloud.Model.Cliente;
+import adaptivex.pedidoscloud.Model.MarcaDataBaseHelper;
+import adaptivex.pedidoscloud.Model.Producto;
+import adaptivex.pedidoscloud.R;
+import adaptivex.pedidoscloud.View.RVAdapters.RVAdapterProducto;
 
 import java.util.ArrayList;
 
