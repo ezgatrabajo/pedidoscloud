@@ -5,13 +5,13 @@ import android.os.AsyncTask;
 import android.util.Log;
 import android.widget.Toast;
 
+import java.util.HashMap;
+
 import adaptivex.pedidoscloud.Config.Configurador;
 import adaptivex.pedidoscloud.Config.GlobalValues;
 import adaptivex.pedidoscloud.Controller.MemoController;
 import adaptivex.pedidoscloud.Core.parserJSONtoModel.MemoParser;
 import adaptivex.pedidoscloud.Model.Memo;
-
-import java.util.HashMap;
 
 /**
  * Created by Ezequiel on 02/04/2017.
@@ -70,9 +70,8 @@ public class HelperMemo extends AsyncTask<Void, Void, Void> {
             }
             memosCtr.cerrar();
             setRespuesta(GlobalValues.getINSTANCIA().RETURN_OK);
-            if (getRespuesta()== GlobalValues.getINSTANCIA().RETURN_OK){
-                Toast.makeText(getCtx(), "Descarga de Memos Completada ", Toast.LENGTH_SHORT).show();
-            }
+            Toast.makeText(getCtx(), "Descarga de Memos Completada ", Toast.LENGTH_SHORT).show();
+
         }catch(Exception e){
             Toast.makeText(getCtx(), "Error: "+e.getMessage().toString(), Toast.LENGTH_SHORT).show();
         }

@@ -29,6 +29,7 @@ public class GlobalValues {
     public static final int PRODUCTODETALLE = 8;
     public static final int LISTADOHOJARUTA = 9;
     public static final int HOME = 10;
+    public static final int CONFIGURACION = 10;
 
     //ERRORES
     public static final int RETURN_OK = 1;
@@ -79,6 +80,7 @@ public class GlobalValues {
     public static final int PARAM_GET_STOCK_PRECIOS = 8;
     public static final int PARAM_SERVICE_STOCK_PRECIOS_WORKING = 9;
     public static final int PARAM_EMPRESA_ID = 10;
+    public static final int PARAM_DOWNLOAD_DATABASE = 11;
 
     public static final String VALUE_SERVICE_STOCK_PRECIOS_WORKING = "Y";
     public static final String VALUE_SERVICE_STOCK_PRECIOS_WORKING_NOT = "N";

@@ -1,6 +1,7 @@
 package adaptivex.pedidoscloud.Core;
 
 import android.content.Context;
+import android.widget.Toast;
 
 import adaptivex.pedidoscloud.Config.GlobalValues;
 import adaptivex.pedidoscloud.Controller.ParameterController;
@@ -20,6 +21,32 @@ public class ParameterHelper {
     public ParameterHelper(Context ctx){
         this.ctx = ctx;
     }
+
+
+    public boolean isDownloadDatabase() {
+        boolean isdownloaddatabase = false;
+        try {
+            ParameterController pc = new ParameterController(ctx);
+
+            Parameter p= pc.abrir().findById(GlobalValues.getINSTANCIA().PARAM_DOWNLOAD_DATABASE);
+
+            if (p==null){
+                p = new Parameter();
+                p.setId(GlobalValues.getINSTANCIA().PARAM_DOWNLOAD_DATABASE);
+                p.setValor_texto("N");
+                pc.abrir().agregar(p);
+            }
+
+            if (p.getValor_texto().equals("Y")){
+                isdownloaddatabase= true;
+            }
+            return isdownloaddatabase;
+        }catch(Exception e ){
+            Toast.makeText(ctx,"Error: " + e.getMessage().toString(),Toast.LENGTH_LONG).show();
+            return false;
+        }
+    }
+
     public boolean booleanGetStockPrecios(){
         boolean resultado = false;
         //Leer de la tabla parametros cada servicio
@@ -66,6 +93,7 @@ public class ParameterHelper {
         }
         return respuesta;
     }
+
     public void setServiceStockPrecioWorking(String working){
 
         //Leer de la tabla parametros cada servicio

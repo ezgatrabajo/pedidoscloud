@@ -6,14 +6,14 @@ import android.content.Context;
 import android.content.Intent;
 import android.widget.Toast;
 
+import java.util.HashMap;
+
 import adaptivex.pedidoscloud.Config.Configurador;
 import adaptivex.pedidoscloud.Config.GlobalValues;
 import adaptivex.pedidoscloud.Controller.ProductoController;
 import adaptivex.pedidoscloud.Core.ParameterHelper;
 import adaptivex.pedidoscloud.Core.parserJSONtoModel.ProductoParser;
 import adaptivex.pedidoscloud.Model.Producto;
-
-import java.util.HashMap;
 
 /**
  * An {@link IntentService} subclass for handling asynchronous task requests in
@@ -114,7 +114,7 @@ public class IntentServiceStockPrecios extends IntentService {
                 //ph.setServiceStockPrecioWorking(GlobalValues.getINSTANCIA().VALUE_SERVICE_STOCK_PRECIOS_WORKING_NOT);
                 setRespuesta(GlobalValues.getINSTANCIA().RETURN_OK);
                 Toast.makeText(getBaseContext(), "Finalizacion Actualizacion de Productos ", Toast.LENGTH_SHORT).show();
-                Thread.sleep(60000);
+                Thread.sleep(10000);
 
 
             } catch (InterruptedException e) {

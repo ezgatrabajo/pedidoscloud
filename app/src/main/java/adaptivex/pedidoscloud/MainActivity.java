@@ -27,11 +27,11 @@ import adaptivex.pedidoscloud.Model.Hojaruta;
 import adaptivex.pedidoscloud.Model.Pedido;
 import adaptivex.pedidoscloud.Model.Producto;
 import adaptivex.pedidoscloud.Servicios.HelperMemo;
-import adaptivex.pedidoscloud.Servicios.HelperPedidos;
 import adaptivex.pedidoscloud.Servicios.HelperProductos;
 import adaptivex.pedidoscloud.Servicios.IntentServiceStockPrecios;
 import adaptivex.pedidoscloud.View.Categorias.ListadoCategoriasFragment;
 import adaptivex.pedidoscloud.View.Clientes.ListadoClientesFragment;
+import adaptivex.pedidoscloud.View.Consulting.ConfigFragment;
 import adaptivex.pedidoscloud.View.Consulting.ResumenFragment;
 import adaptivex.pedidoscloud.View.Hojarutas.ListadoHojarutasFragment;
 import adaptivex.pedidoscloud.View.Marcas.ListadoMarcasFragment;
@@ -63,7 +63,8 @@ public class MainActivity extends AppCompatActivity
         RVAdapterPedido.OnHeadlineSelectedListener,
         RVAdapterHojaruta.OnHeadlineSelectedListener,
         HomeFragment.OnFragmentInteractionListener,
-        ResumenFragment.OnFragmentInteractionListener
+        ResumenFragment.OnFragmentInteractionListener,
+        ConfigFragment.OnFragmentInteractionListener
 
 {
     private FloatingActionButton BTN_PRINCIPAL;
@@ -85,11 +86,19 @@ public class MainActivity extends AppCompatActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
+
         ParameterHelper ph = new ParameterHelper(getBaseContext());
+
         if (ph.getServiceStockPrecios().equals("Y")){
             intentServiceStockPrecios = new Intent(MainActivity.this, IntentServiceStockPrecios.class);
             getBaseContext().startService(intentServiceStockPrecios);
         }
+
+        if (!ph.isDownloadDatabase()){
+            IniciarApp ia = new IniciarApp(getBaseContext());
+            ia.downloadDatabase();
+        }
+
     }
 
     @Override
@@ -374,19 +383,15 @@ public class MainActivity extends AppCompatActivity
 
             } else if (id == R.id.nav_configuracion) {
                 try{
-                    Intent i = new Intent(this, ConfigActivity.class);
-                    startActivity(i);
+
+                    fragment = new ConfigFragment();
+                    fragmentTransaction = true;
+                    GlobalValues.getINSTANCIA().setActualFragment(GlobalValues.getINSTANCIA().CONFIGURACION);
                 }catch(Exception e){
                     Toast.makeText(this, "Error" + e.getMessage(), Toast.LENGTH_LONG).show();
                 }
 
-            } else if (id == R.id.nav_configuracion) {
-                try{
-                    HelperPedidos hp = new HelperPedidos(this,GlobalValues.getINSTANCIA().ENVIAR_PEDIDOSPENDIENTES );
-                    hp.execute();
-                }catch(Exception e){
-                    Toast.makeText(this, "Error" + e.getMessage(), Toast.LENGTH_LONG).show();
-                }
+
 
             } else if (id == R.id.nav_actualizarproductos) {
                 try{

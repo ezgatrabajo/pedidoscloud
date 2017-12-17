@@ -120,38 +120,43 @@ public  class IniciarApp  {
             pc.abrir().agregar(p);
             pc.cerrar();
 
-            p = null;
+            p = new Parameter();
             p.setId(GlobalValues.getINSTANCIA().PARAM_GET_STOCK_PRECIOS);
             p.setValor_texto("N");
             pc.abrir().agregar(p);
             pc.cerrar();
 
-            p = null;
+            p = new Parameter();
             p.setId(GlobalValues.getINSTANCIA().PARAM_SERVICE_STOCK_PRECIOS_WORKING);
             p.setValor_texto("N");
             pc.abrir().agregar(p);
             pc.cerrar();
 
             //Variables de usuario
-            p = null;
+            p = new Parameter();
             p.setId(GlobalValues.getINSTANCIA().PARAM_USERID);
             p.setValor_texto("");
             pc.abrir().agregar(p);
             pc.cerrar();
 
 
-            p = null;
+            p = new Parameter();
             p.setId(GlobalValues.getINSTANCIA().PARAM_EMAIL);
             p.setValor_texto("");
             pc.abrir().agregar(p);
             pc.cerrar();
 
-            p = null;
+            p = new Parameter();
             p.setId(GlobalValues.getINSTANCIA().PARAM_EMPRESA_ID);
             p.setValor_texto("");
             pc.abrir().agregar(p);
             pc.cerrar();
 
+            p = new Parameter();
+            p.setId(GlobalValues.getINSTANCIA().PARAM_DOWNLOAD_DATABASE);
+            p.setValor_texto("N");
+            pc.abrir().agregar(p);
+            pc.cerrar();
 
             return true;
         }catch(Exception e ){
@@ -288,7 +293,6 @@ public  class IniciarApp  {
             HelperCategorias ca = new HelperCategorias(getContext());
             ca.execute();
 
-
             HelperClientes c = new HelperClientes(getContext());
             c.execute();
 
@@ -299,12 +303,18 @@ public  class IniciarApp  {
             hd.execute();
 
             HelperMemo hp = new HelperMemo(getContext());
-            hd.execute();
+            hp.execute();
 
+            ParameterController pc  = new ParameterController(getContext());
+            Parameter param1 = pc.abrir().findById(GlobalValues.getINSTANCIA().PARAM_DOWNLOAD_DATABASE);
+            param1.setValor_texto("Y");
+            pc.abrir().modificar(param1);
+            pc.cerrar();
 
             return true;
         }catch (Exception e ){
           Log.d("IniciarAPP", e.getMessage());
+            Toast.makeText(context, "Error " + e.getMessage().toString(), Toast.LENGTH_SHORT).show();
             return false;
         }
     }

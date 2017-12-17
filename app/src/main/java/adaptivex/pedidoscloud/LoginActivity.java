@@ -31,16 +31,16 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+
 import adaptivex.pedidoscloud.Config.Configurador;
 import adaptivex.pedidoscloud.Config.GlobalValues;
 import adaptivex.pedidoscloud.Core.IniciarApp;
 import adaptivex.pedidoscloud.Core.parserJSONtoModel.UserParser;
 import adaptivex.pedidoscloud.Model.User;
 import adaptivex.pedidoscloud.Servicios.WebRequest;
-
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
 
 import static android.Manifest.permission.READ_CONTACTS;
 
@@ -78,13 +78,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        //Si NO esta instalad
-        //
-        //
-        //
-        // a, se instala
         IniciarApp ia = new IniciarApp(this.getBaseContext());
-
         if (!ia.isInstalled()){
             ia.iniciarBD();
         }
