@@ -47,27 +47,63 @@ public class ParameterHelper {
         }
     }
 
-    public boolean booleanGetStockPrecios(){
+    public boolean isStockPrecios(){
         boolean resultado = false;
-        //Leer de la tabla parametros cada servicio
-        ParameterController pc = new ParameterController(ctx);
-        Parameter p = new Parameter();
-        p = pc.abrir().findById(GlobalValues.getINSTANCIA().PARAM_GET_STOCK_PRECIOS);
-        if (p!=null){
+        try{
+            //Leer de la tabla parametros cada servicio
+            ParameterController pc = new ParameterController(ctx);
+            Parameter p = pc.abrir().findById(GlobalValues.getINSTANCIA().PARAM_SERVICE_STOCK_PRECIOS_ACTIVATE);
+            if (p==null){
+                p = new Parameter();
+                p.setId(GlobalValues.getINSTANCIA().PARAM_SERVICE_STOCK_PRECIOS_ACTIVATE);
+                p.setValor_texto("N");
+                pc.abrir().agregar(p);
+                pc.cerrar();
+            }
             //Si parametro es Y, se debe activar el servicio
             if (p.getValor_texto().equals("Y")) {
+
                 resultado = true;
             };
+            return resultado;
+        }catch(Exception e ){
+            Toast.makeText(ctx,"Error: " + e.getMessage().toString(),Toast.LENGTH_LONG).show();
+            return false;
         }
-        return resultado;
     }
+
+    public boolean isEnvioPedidos(){
+        boolean resultado = false;
+        try{
+            //Leer de la tabla parametros cada servicio
+            ParameterController pc = new ParameterController(ctx);
+            Parameter p = pc.abrir().findById(GlobalValues.getINSTANCIA().PARAM_SERVICE_ENVIO_PEDIDOS_ACTIVATE);
+            if (p==null){
+                p = new Parameter();
+                p.setId(GlobalValues.getINSTANCIA().PARAM_SERVICE_ENVIO_PEDIDOS_ACTIVATE);
+                p.setValor_texto("N");
+                pc.abrir().agregar(p);
+                pc.cerrar();
+            }
+            //Si parametro es Y, se debe activar el servicio
+            if (p.getValor_texto().equals("Y")) {
+
+                resultado = true;
+            };
+            return resultado;
+        }catch(Exception e ){
+            Toast.makeText(ctx,"Error: " + e.getMessage().toString(),Toast.LENGTH_LONG).show();
+            return false;
+        }
+    }
+
 
     public String getServiceStockPrecios(){
         String respuesta = "N";
         //Leer de la tabla parametros cada servicio
         ParameterController pc = new ParameterController(ctx);
         Parameter p = new Parameter();
-        p = pc.abrir().findById(GlobalValues.getINSTANCIA().PARAM_GET_STOCK_PRECIOS);
+        p = pc.abrir().findById(GlobalValues.getINSTANCIA().PARAM_SERVICE_STOCK_PRECIOS_ACTIVATE);
         if (p!=null){
             //Si parametro es Y, se debe activar el servicio
             if (p.getValor_texto().equals("Y")){

@@ -18,6 +18,7 @@ import adaptivex.pedidoscloud.Core.ParameterHelper;
 import adaptivex.pedidoscloud.Model.Parameter;
 import adaptivex.pedidoscloud.R;
 import adaptivex.pedidoscloud.Servicios.HelperMemo;
+import adaptivex.pedidoscloud.Servicios.IntentServiceEnvioPedidos;
 import adaptivex.pedidoscloud.Servicios.IntentServiceStockPrecios;
 
 /**
@@ -40,7 +41,10 @@ public class ConfigFragment extends Fragment {
 
     private OnFragmentInteractionListener mListener;
     protected ToggleButton tb;
+    protected ToggleButton tbEnvioPedidos;
     protected Intent intentServiceStockPrecios;
+    protected Intent intentServiceEnvioPedidos;
+
 
     public ConfigFragment() {
         // Required empty public constructor
@@ -61,8 +65,6 @@ public class ConfigFragment extends Fragment {
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
         fragment.setArguments(args);
-
-
 
 
         return fragment;
@@ -87,10 +89,11 @@ public class ConfigFragment extends Fragment {
 
         View vista = inflater.inflate(R.layout.fragment_config, container, false);
 
+
         Button btnRecordatorio = (Button) vista.findViewById(R.id.btnDescargarRecordatorio);
 
         intentServiceStockPrecios = new Intent(getContext(), IntentServiceStockPrecios.class);
-
+        intentServiceEnvioPedidos = new Intent(getContext(), IntentServiceEnvioPedidos.class);
         //Boton simple
         btnRecordatorio.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -106,59 +109,78 @@ public class ConfigFragment extends Fragment {
 
         //Botones Si y NO
         tb = (ToggleButton) vista.findViewById(R.id.toggleButtonStockPrecios);
-        tb.setOnClickListener(
-                 new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        try {
+        tbEnvioPedidos = (ToggleButton) vista.findViewById(R.id.toggleButtonEnvioPedidos);
 
-                            ParameterController pc = new ParameterController(getContext());
-                            Parameter p = new Parameter();
-                            p = pc.abrir().findById(GlobalValues.getINSTANCIA().PARAM_GET_STOCK_PRECIOS);
-
-                            switch (v.getId()) {
-                                //StockPrecios
-                                case R.id.toggleButtonStockPrecios:
-                                    if (tb.isChecked()) {
-                                        if (p != null) {
-                                            p.setValor_texto("Y");
-                                            pc.abrir().modificar(p);
-                                            pc.cerrar();
-                                        }
-                                        getContext().startService(intentServiceStockPrecios);
-                                    } else {
-                                        getContext().stopService(intentServiceStockPrecios);
-                                        if (p != null) {
-                                            p.setValor_texto("N");
-                                            pc.abrir().modificar(p);
-                                            pc.cerrar();
-                                        }
-                                    }
-                                    break;
-
-
-                            }
-                        } catch (Exception e) {
-                            Toast.makeText(getContext(), "Error " + e.getMessage().toString(), Toast.LENGTH_LONG).show();
-                        }
-
-                    }
-
-                }
-
-        );
-
-
-
-
-        //Carga Botones de acuerdo a si estan activados o no los servicios
+        //Chequear Servicio Stock Precios
         ParameterHelper ph = new ParameterHelper(getContext());
-        tb.setChecked(ph.booleanGetStockPrecios());
+        tb.setChecked(ph.isStockPrecios());
+        tb.setOnClickListener( new ClickListenerToggleButton());
+
+        //Chequear Servicio Envio de Pedidos
+        tbEnvioPedidos.setChecked(ph.isEnvioPedidos());
+        tbEnvioPedidos.setOnClickListener(new ClickListenerToggleButton());
 
         return vista;
     }
 
+    private class ClickListenerToggleButton implements View.OnClickListener {
+        @Override
+        public void onClick(View v) {
+            try {
 
+                ParameterController pc = new ParameterController(getContext());
+                Parameter p = new Parameter();
+                p = pc.abrir().findById(GlobalValues.getINSTANCIA().PARAM_SERVICE_STOCK_PRECIOS_ACTIVATE);
+
+                Parameter pEnvioPedidos = new Parameter();
+                pEnvioPedidos = pc.abrir().findById(GlobalValues.getINSTANCIA().PARAM_SERVICE_ENVIO_PEDIDOS_ACTIVATE);
+
+                switch (v.getId()) {
+                    //StockPrecios
+                    case R.id.toggleButtonStockPrecios:
+                        if (tb.isChecked()) {
+                            if (p != null) {
+                                p.setValor_texto("Y");
+                                pc.abrir().modificar(p);
+                                pc.cerrar();
+                            }
+                            getContext().startService(intentServiceStockPrecios);
+                        } else {
+                            getContext().stopService(intentServiceStockPrecios);
+                            if (p != null) {
+                                p.setValor_texto("N");
+                                pc.abrir().modificar(p);
+                                pc.cerrar();
+                            }
+                        }
+                        break;
+                    case R.id.toggleButtonEnvioPedidos:
+                        if (tbEnvioPedidos.isChecked()) {
+                            if (pEnvioPedidos != null) {
+                                pEnvioPedidos.setValor_texto("Y");
+                                pc.abrir().modificar(pEnvioPedidos);
+                                pc.cerrar();
+                            }
+                            getContext().startService(intentServiceEnvioPedidos);
+                        } else {
+                            getContext().stopService(intentServiceEnvioPedidos);
+                            if (pEnvioPedidos != null) {
+                                pEnvioPedidos.setValor_texto("N");
+                                pc.abrir().modificar(pEnvioPedidos);
+                                pc.cerrar();
+                            }
+                        }
+                        break;
+
+
+                }
+            } catch (Exception e) {
+                Toast.makeText(getContext(), "Error " + e.getMessage().toString(), Toast.LENGTH_LONG).show();
+            }
+
+        }
+
+    }
 
 
     // TODO: Rename method, update argument and hook method into UI event

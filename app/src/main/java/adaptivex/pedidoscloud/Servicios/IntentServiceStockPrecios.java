@@ -63,7 +63,6 @@ public class IntentServiceStockPrecios extends IntentService {
     // TODO: Customize helper method
     public static void startActionGetStockPrecios(Context context) {
         Intent intent = new Intent(context, IntentServiceStockPrecios.class);
-
         context.startService(intent);
     }
     @Override

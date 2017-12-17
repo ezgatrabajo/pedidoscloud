@@ -77,15 +77,23 @@ public class GlobalValues {
     public static final int PARAM_INSTALLED = 5;
     public static final int PARAM_CONFIGFILE =6;
     public static final int PARAM_REINICIARAPP = 7;
-    public static final int PARAM_GET_STOCK_PRECIOS = 8;
+    public static final int PARAM_SERVICE_STOCK_PRECIOS_ACTIVATE = 8;
     public static final int PARAM_SERVICE_STOCK_PRECIOS_WORKING = 9;
     public static final int PARAM_EMPRESA_ID = 10;
     public static final int PARAM_DOWNLOAD_DATABASE = 11;
+    public static final int PARAM_SERVICE_ENVIO_PEDIDOS_ACTIVATE = 12;
+
+
+    //CONSTANTERS HELPER PEDIDOS
+    public static final int OPTION_HELPER_ENVIO_PEDIDO = 1;
+    public static final int OPTION_HELPER_ENVIO_PEDIDO_TODOS = 2;
+
+
 
     public static final String VALUE_SERVICE_STOCK_PRECIOS_WORKING = "Y";
     public static final String VALUE_SERVICE_STOCK_PRECIOS_WORKING_NOT = "N";
 
-    private static  String[] ESTADOS = {"Nuevo","Enviado","Preparado","Entregado"};
+    public static  String[] ESTADOS = {"Nuevo","Enviado","Preparado","Entregado"};
 
     //Variables globales para Generar Pedido
     private long vgPedidoIdActual;
@@ -114,16 +122,6 @@ public class GlobalValues {
         return INSTANCIA;
     }
 
-
-    public static String getESTADOS(Integer id) {
-        if (id == null)
-            {id = 0 ;}
-        return ESTADOS[id];
-    }
-
-    public static void setESTADOS(String[] ESTADOS) {
-        GlobalValues.ESTADOS = ESTADOS;
-    }
 
 
     public int getActualFragment() {

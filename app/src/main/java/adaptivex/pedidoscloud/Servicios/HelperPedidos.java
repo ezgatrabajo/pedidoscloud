@@ -6,14 +6,6 @@ import android.os.AsyncTask;
 import android.util.Log;
 import android.widget.Toast;
 
-import adaptivex.pedidoscloud.Config.Configurador;
-import adaptivex.pedidoscloud.Config.GlobalValues;
-import adaptivex.pedidoscloud.Controller.PedidoController;
-import adaptivex.pedidoscloud.Controller.PedidodetalleController;
-import adaptivex.pedidoscloud.Core.parserJSONtoModel.PedidoParser;
-import adaptivex.pedidoscloud.Model.Pedido;
-import adaptivex.pedidoscloud.Model.Pedidodetalle;
-
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -30,6 +22,14 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
+
+import adaptivex.pedidoscloud.Config.Configurador;
+import adaptivex.pedidoscloud.Config.GlobalValues;
+import adaptivex.pedidoscloud.Controller.PedidoController;
+import adaptivex.pedidoscloud.Controller.PedidodetalleController;
+import adaptivex.pedidoscloud.Core.parserJSONtoModel.PedidoParser;
+import adaptivex.pedidoscloud.Model.Pedido;
+import adaptivex.pedidoscloud.Model.Pedidodetalle;
 
 
 /**
@@ -81,38 +81,7 @@ public class HelperPedidos extends AsyncTask<Void, Void, Void> {
                 this.registro.put("iva", String.valueOf(paramPedido.getIva()));
                 this.registro.put("subtotal", String.valueOf(paramPedido.getSubtotal()));
 
-                //nueva forma
-                // 3. build jsonObject
-                /*
-                JSONObject pedido = new JSONObject();
-                pedido.accumulate("android_id", paramPedido.getIdTmp().toString());
-                pedido.accumulate("estado_id", String.valueOf(GlobalValues.getINSTANCIA().consPedidoEstadoEnviado));
-                pedido.accumulate("cliente_id", paramPedido.getCliente_id().toString());
-                pedido.accumulate("empresa_id", String.valueOf(GlobalValues.getINSTANCIA().getUserlogued().getEntidad_id()));
-                pedido.accumulate("user_id", String.valueOf(GlobalValues.getINSTANCIA().getUserlogued().getId()));
-                pedido.accumulate("created", String.valueOf(fechahoystr));
-                pedido.accumulate("monto", String.valueOf(paramPedido.getMonto()));
-                pedido.accumulate("iva", String.valueOf(paramPedido.getIva()));
-                pedido.accumulate("subtotal", String.valueOf(paramPedido.getSubtotal()));
-                */
 
-                /*
-                "pedido_id":"12",
-                "fecha":"20-05-2017",
-                "empleado_id":"4",
-                "empresa_id":"6",
-                "cliente_id":"6",
-                "android_id":"1",
-                "pedidodetalles":
-                    [
-				{
-					"id": "6",
-					"android_id": "6",
-					"producto_id": "1",
-					"cantidad":"1"
-				}
-
-			]*/
                 //Procesa post
                 String jsonStr = webreq.makeWebServiceCall(Configurador.urlPostPedido, WebRequest.POST,this.registro);
 
