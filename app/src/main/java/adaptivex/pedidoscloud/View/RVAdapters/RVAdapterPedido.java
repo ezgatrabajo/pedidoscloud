@@ -63,7 +63,7 @@ public class RVAdapterPedido extends RecyclerView.Adapter<RVAdapterPedido.Pedido
         pedidoViewHolder.tvIpfId.setText(String.valueOf(pedidos.get(i).getId()));
         pedidoViewHolder.tvCreated.setText(pedidos.get(i).getCreated());
         pedidoViewHolder.tvMonto.setText(String.valueOf(pedidos.get(i).getMonto()));
-        pedidoViewHolder.tvIpfEstadoDesc.setText(GlobalValues.getESTADOS(pedidos.get(i).getEstadoId()));
+        pedidoViewHolder.tvIpfEstadoDesc.setText(GlobalValues.ESTADOS[pedidos.get(i).getEstadoId()]);
         pedidoViewHolder.tvIpfIdTmp.setText(String.valueOf( pedidos.get(i).getIdTmp()));
         pedidoViewHolder.tvIpfClienteDesc.setText(pedidos.get(i).getCliente().getContacto());
 

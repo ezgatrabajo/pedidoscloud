@@ -117,7 +117,7 @@ public class DetallePedidoFragment extends Fragment implements  View.OnClickList
         tvDpfIdTmp.setText(String.valueOf(pedido.getIdTmp()));
         tvDpfCreated.setText(String.valueOf(pedido.getCreatedDMY()));
         tvDpfMonto.setText(String.valueOf(pedido.getMonto()));
-        tvDpfEstadoDesc.setText(String.valueOf(GlobalValues.getINSTANCIA().getESTADOS(pedido.getEstadoId())));
+        tvDpfEstadoDesc.setText(String.valueOf(GlobalValues.getINSTANCIA().ESTADOS[pedido.getEstadoId()]));
         tvDpfClienteDesc.setText(pedido.getCliente().getContacto());
 
 
@@ -218,7 +218,7 @@ public class DetallePedidoFragment extends Fragment implements  View.OnClickList
                 sleep(1000);
                 PedidoController pc = new PedidoController(this.getContext());
                 Pedido p = pc.abrir().buscar(Long.valueOf(this.tvDpfIdTmp.getText().toString()),true);
-                tvDpfEstadoDesc.setText(String.valueOf(GlobalValues.getINSTANCIA().getESTADOS(p.getEstadoId())));
+                tvDpfEstadoDesc.setText(String.valueOf(GlobalValues.getINSTANCIA().ESTADOS[p.getEstadoId()]));
                 tvDpfId.setText(String.valueOf(p.getId()));
 
             }catch (Exception e){

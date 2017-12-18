@@ -121,7 +121,7 @@ public  class IniciarApp  {
             pc.cerrar();
 
             p = new Parameter();
-            p.setId(GlobalValues.getINSTANCIA().PARAM_GET_STOCK_PRECIOS);
+            p.setId(GlobalValues.getINSTANCIA().PARAM_SERVICE_STOCK_PRECIOS_ACTIVATE);
             p.setValor_texto("N");
             pc.abrir().agregar(p);
             pc.cerrar();
