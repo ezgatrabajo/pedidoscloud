@@ -55,6 +55,11 @@ public class GlobalValues {
     public static final int ENVIAR_PEDIDO = 1;
     public static final int ENVIAR_PEDIDOSPENDIENTES = 2;
 
+    //CONSTANTERS HELPER PEDIDOS
+    public static final int OPTION_HELPER_ENVIO_PEDIDO = 1;
+    public static final int OPTION_HELPER_ENVIO_PEDIDOS_PENDIENTES = 2;
+
+
 
     private int PEDIDO_ACTION_VALUE;
     public static final int PEDIDO_ACTION_DELETE = 1;
@@ -84,9 +89,6 @@ public class GlobalValues {
     public static final int PARAM_SERVICE_ENVIO_PEDIDOS_ACTIVATE = 12;
 
 
-    //CONSTANTERS HELPER PEDIDOS
-    public static final int OPTION_HELPER_ENVIO_PEDIDO = 1;
-    public static final int OPTION_HELPER_ENVIO_PEDIDO_TODOS = 2;
 
 
 

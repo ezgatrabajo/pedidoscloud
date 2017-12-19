@@ -154,25 +154,7 @@ public class ConfigFragment extends Fragment {
                             }
                         }
                         break;
-                    case R.id.toggleButtonEnvioPedidos:
-                        /*
-                        if (tbEnvioPedidos.isChecked()) {
-                            if (pEnvioPedidos != null) {
-                                pEnvioPedidos.setValor_texto("Y");
-                                pc.abrir().modificar(pEnvioPedidos);
-                                pc.cerrar();
-                            }
-                            getContext().startService(intentServiceEnvioPedidos);
-                        } else {
-                            getContext().stopService(intentServiceEnvioPedidos);
-                            if (pEnvioPedidos != null) {
-                                pEnvioPedidos.setValor_texto("N");
-                                pc.abrir().modificar(pEnvioPedidos);
-                                pc.cerrar();
-                            }
-                        }
-                        */
-                        break;
+
 
 
                 }

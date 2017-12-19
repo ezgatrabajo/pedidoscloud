@@ -36,27 +36,7 @@
             </TableRow>
 
 
-            <TableRow
-                android:visible="false"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-                <TextView
-                    android:id="@+id/lblSyncPedidos"
-                    android:layout_column="0"
-                    android:textStyle="bold"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Enviar Pedidos Automaticamente:">
-                </TextView>
 
-
-                <ToggleButton
-                    android:id="@+id/toggleButtonEnvioPedidos"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="ToggleButton" />
-
-            </TableRow>
 
 
             <TableRow

@@ -41,11 +41,13 @@
 
                 <item
                     android:id="@+id/nav_pedidosentrega"
-                    android:title="Descargar Pedidos para Entregar" />
+                    android:title="Descargar Pedidos para Entregar"
+                    android:visible="false"/>
+
                 <item
                     android:id="@+id/nav_diagramarrecorrido"
                     android:title="Diagramar Entrega de Pedidos con GPS"
-                    android:visible="true"/>
+                    android:visible="false"/>
 
 
 
@@ -98,11 +100,14 @@
         <group android:id="@+id/group_usuario">
 
             <item
+                android:visible="false"
                 android:id="@+id/nav_login"
-                android:title="Iniciar Sesion" />
+                android:title="Cambiar Sesion" />
+
             <item
                 android:id="@+id/nav_logout"
-                android:title="Salir" />
+                android:title="Cerrar Sesion" />
+
         </group>
 </group>
 </menu>

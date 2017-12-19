@@ -27,6 +27,7 @@ import adaptivex.pedidoscloud.Model.Hojaruta;
 import adaptivex.pedidoscloud.Model.Pedido;
 import adaptivex.pedidoscloud.Model.Producto;
 import adaptivex.pedidoscloud.Servicios.HelperMemo;
+import adaptivex.pedidoscloud.Servicios.HelperPedidos;
 import adaptivex.pedidoscloud.Servicios.HelperProductos;
 import adaptivex.pedidoscloud.Servicios.IntentServiceStockPrecios;
 import adaptivex.pedidoscloud.View.Categorias.ListadoCategoriasFragment;
@@ -310,6 +311,14 @@ public class MainActivity extends AppCompatActivity
 
                     GlobalValues.getINSTANCIA().setActualFragment(GlobalValues.getINSTANCIA().LISTADOPEDIDOS);
                     GlobalValues.getINSTANCIA().setESTADO_ID_SELECCIONADO(GlobalValues.getINSTANCIA().consPedidoEstadoEnviado);
+                }catch(Exception e){
+                    Toast.makeText(this, "Error: " + e.getMessage(), Toast.LENGTH_LONG).show();
+                }
+
+            }else if (id == R.id.nav_enviarpedidospendientes) {
+                try {
+                    HelperPedidos hp = new HelperPedidos(getBaseContext(), GlobalValues.getINSTANCIA().OPTION_HELPER_ENVIO_PEDIDOS_PENDIENTES);
+                    hp.execute();
                 }catch(Exception e){
                     Toast.makeText(this, "Error: " + e.getMessage(), Toast.LENGTH_LONG).show();
                 }
