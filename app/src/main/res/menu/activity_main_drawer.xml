@@ -16,55 +16,37 @@
                     android:id="@+id/nav_configuracion"
                     android:title="Configuracion" />
 
-                <item
-                    android:visible="false"
-                    android:id="@+id/nav_memo"
-                    android:title="Actualizar Memo" />
 
                 <item
-                    android:visible="false"
+                    android:visible="true"
                     android:id="@+id/nav_enviarpedidospendientes"
                     android:title="Enviar Pedidos Pendientes" />
 
-                <item
-                    android:visible="false"
-                    android:id="@+id/nav_actualizarproductos"
-                    android:title="Actualizar Stocks y Precios" />
 
 
-                <item
-                    android:visible="false"
-                    android:id="@+id/nav_pedidosentrega"
-                    android:title="Descargar Pedidos para Entregar" />
-                <item
-                    android:id="@+id/nav_diagramarrecorrido"
-                    android:title="Diagramar Recorrido de Entrega de Pedidos"
-                    android:visible="false"/>
 
 
-                <item
-                    android:id="@+id/nav_nuevopedido"
-                    android:title="Nuevo Pedido"
-                    android:visible="false"/>
-                <item
-                    android:id="@+id/nav_verultimopedido"
-                    android:title="Ver Ultimo Pedido"
-                    android:visible="false"/>
+
             </group>
             <group android:id="@+id/group_distribucion2">
-                <item
-                    android:id="@+id/nav_pedidos"
-                    android:title="Todos los Pedidos"
-                    android:visible="false"/>
 
 
                 <item
                     android:id="@+id/nav_pedidos_pendientes"
-                    android:title="Pedidos Pendientes" />
+                    android:title="Ver Pedidos Pendientes" />
 
                 <item
                     android:id="@+id/nav_pedidos_enviados"
-                    android:title="Pedidos Enviados" />
+                    android:title="Ver Pedidos Enviados" />
+
+                <item
+                    android:id="@+id/nav_pedidosentrega"
+                    android:title="Descargar Pedidos para Entregar" />
+                <item
+                    android:id="@+id/nav_diagramarrecorrido"
+                    android:title="Diagramar Entrega de Pedidos con GPS"
+                    android:visible="true"/>
+
 
 
 
@@ -83,10 +65,6 @@
         </item>
 
     <group android:id="@+id/group_mantenimiento">
-    <item
-            android:id="@+id/nav_sync_datos"
-            android:title="Reinstalar Base de Datos"
-            />
 
 
         <item

@@ -155,6 +155,7 @@ public class ConfigFragment extends Fragment {
                         }
                         break;
                     case R.id.toggleButtonEnvioPedidos:
+                        /*
                         if (tbEnvioPedidos.isChecked()) {
                             if (pEnvioPedidos != null) {
                                 pEnvioPedidos.setValor_texto("Y");
@@ -170,6 +171,7 @@ public class ConfigFragment extends Fragment {
                                 pc.cerrar();
                             }
                         }
+                        */
                         break;
 
 

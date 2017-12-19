@@ -292,15 +292,7 @@ public class MainActivity extends AppCompatActivity
 
                 GlobalValues.getINSTANCIA().setActualFragment(GlobalValues.getINSTANCIA().LISTADOPEDIDODETALLES);
 
-            }else if (id == R.id.nav_pedidos) {
-                try{
-                    fragment = new ListadoPedidosFragment();
-                    fragmentTransaction = true;
 
-                    GlobalValues.getINSTANCIA().setActualFragment(GlobalValues.getINSTANCIA().LISTADOPEDIDOS);
-                }catch(Exception e){
-                    Toast.makeText(this, "Error: " + e.getMessage(), Toast.LENGTH_LONG).show();
-                }
             }else if (id == R.id.nav_pedidos_pendientes) {
                 try{
                     fragment = new ListadoPedidosFragment();
@@ -345,36 +337,21 @@ public class MainActivity extends AppCompatActivity
                 fragment = new ListadoMarcasFragment();
                 fragmentTransaction = true;
                 GlobalValues.getINSTANCIA().setActualFragment(GlobalValues.getINSTANCIA().LISTADOMARCAS);
-            } else if (id == R.id.nav_memo) {
-                try {
-                    HelperMemo hp = new HelperMemo(getBaseContext());
-                    hp.execute();
 
-                }catch(Exception e ){
-                    Toast.makeText(this, "Error: " + e.getMessage(), Toast.LENGTH_LONG).show();
-                }
             } else if (id == R.id.nav_hojarutas) {
                 fragment = new ListadoHojarutasFragment();
                 fragmentTransaction = true;
                 GlobalValues.getINSTANCIA().setActualFragment(GlobalValues.getINSTANCIA().LISTADOHOJARUTA);
 
+            } else if (id == R.id.nav_pedidosentrega) {
+                Toast.makeText(this, "Descarga de Pedidos para entregar " , Toast.LENGTH_LONG).show();
+
+            } else if (id == R.id.nav_diagramarrecorrido) {
+                Toast.makeText(this, "Diagramar en GPS " , Toast.LENGTH_LONG).show();
+
             } else if (id == R.id.nav_descargaImagen) {
                 Intent i = new Intent(this, DescargaImagenActivity.class);
                 startActivity(i);
-
-            } else if (id == R.id.nav_sync_datos) {
-                try{
-                    ParameterHelper pc = new ParameterHelper(getBaseContext());
-                    if (pc.getServiceStockPrecios().equals("Y")){
-                        Toast.makeText(this, "Para Reinstalar la base de datos, debe desactivar los servicios de sincronizacion", Toast.LENGTH_SHORT).show();
-                    }else{
-                        IniciarApp ia = new IniciarApp(this.getBaseContext());
-                        ia.iniciarBD();
-                        ia.downloadDatabase();
-                    }
-                }catch(Exception e){
-                    Toast.makeText(this, "Error: " + e.getMessage(), Toast.LENGTH_LONG).show();
-                }
 
 
             } else if (id == R.id.nav_login) {
@@ -393,13 +370,7 @@ public class MainActivity extends AppCompatActivity
 
 
 
-            } else if (id == R.id.nav_actualizarproductos) {
-                try{
-                    HelperProductos hprod = new HelperProductos(this);
-                    hprod.execute();
-                }catch(Exception e){
-                    Toast.makeText(this, "Error" + e.getMessage(), Toast.LENGTH_LONG).show();
-                }
+
             } else if (id == R.id.nav_logout) {
                 GlobalValues.getINSTANCIA().setUserlogued(null);
                 // Borrar parametro de Base de datos
@@ -421,37 +392,8 @@ public class MainActivity extends AppCompatActivity
                     Toast.makeText(this, "Error: " + e.getMessage(), Toast.LENGTH_LONG).show();
                 }
 
-            } else if (id == R.id.nav_nuevopedido) {
-                GlobalValues.getINSTANCIA().setActualFragment(GlobalValues.getINSTANCIA().LISTADOCLIENTES);
-                GlobalValues.getINSTANCIA().setVgFlagMenuNuevoPedido(true);
-                fragment = new ListadoClientesFragment();
-                fragmentTransaction = true;
-                Bundle args = new Bundle();
-                args.putBoolean(ListadoClientesFragment.paramMenuNuevoPedido, true);
-                fragment.setArguments(args);
 
-            } else if (id == R.id.nav_verultimopedido) {
-                try{
-                    //BUSCAR ULTIMO PEDIDO GENERADO EN EL DISPOSITIVO
-                    GlobalValues.getINSTANCIA().setActualFragment(GlobalValues.getINSTANCIA().DETALLEPEDIDO);
-                    PedidoController pdba = new PedidoController(this);
-                    long nroPedido =  pdba.getMaxIdTmpPedido();
-                    if (nroPedido > 0 ){
-                        GlobalValues.getINSTANCIA().setVgPedidoIdActual(pdba.getMaxIdTmpPedido());
-                        GlobalValues.getINSTANCIA().setVgPedidoSeleccionado(GlobalValues.getINSTANCIA().getVgPedidoIdActual());
-                        Bundle args = new Bundle();
-                        fragment = new DetallePedidoFragment();
-                        fragmentTransaction = true;
-                        args.putLong(DetallePedidoFragment.paramPedidoIdTmp,GlobalValues.getINSTANCIA().getVgPedidoIdActual());
-                        fragment.setArguments(args);
 
-                    }else{
-                        Toast.makeText(this,"MainActivity: No Hay Pedidos Generados", Toast.LENGTH_LONG).show();
-                        Log.println(Log.ERROR,"MainActivity:"," No Hay Pedidos Generados ");
-                    }
-                }catch(Exception e){
-                    Toast.makeText(this, "Error: " + e.getMessage(), Toast.LENGTH_LONG).show();
-                }
 
 
             }
