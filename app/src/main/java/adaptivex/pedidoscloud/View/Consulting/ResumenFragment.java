@@ -5,16 +5,21 @@ import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import java.util.ArrayList;
 
 import adaptivex.pedidoscloud.Config.GlobalValues;
 import adaptivex.pedidoscloud.Controller.ClienteController;
 import adaptivex.pedidoscloud.Controller.PedidoController;
 import adaptivex.pedidoscloud.Controller.ProductoController;
+import adaptivex.pedidoscloud.Model.Pedido;
 import adaptivex.pedidoscloud.R;
 
 /**
@@ -34,7 +39,7 @@ public class ResumenFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
-
+    private Button btnEliminarPedidosEnviados_resumen;
     private OnFragmentInteractionListener mListener;
 
     public ResumenFragment() {
@@ -82,6 +87,9 @@ public class ResumenFragment extends Fragment {
                 ClienteController clienteCtr = new ClienteController(this.getContext());
                 ProductoController productoCtr = new ProductoController(this.getContext());
 
+                btnEliminarPedidosEnviados_resumen = (Button) vista.findViewById(R.id.btnEliminarPedidosEnviados_resumen);
+                btnEliminarPedidosEnviados_resumen.setOnClickListener(new onClickButton());
+
                 Cursor cursorPedidosPendientes = pedidoCtr.abrir().findByEstadoId(GlobalValues.getINSTANCIA().ESTADO_NUEVO);
                 pedidosPendientes = String.valueOf(cursorPedidosPendientes.getCount());
 
@@ -106,13 +114,36 @@ public class ResumenFragment extends Fragment {
                 Integer cantidadproductos = productoCtr.abrir().obtenerTodos().getCount();
                 TextView tvCantidadProductos = (TextView) vista.findViewById(R.id.tvCantidadProductos);
                 tvCantidadProductos.setText(String.valueOf(cantidadproductos));
+
             return vista;
         }catch (Exception e){
             Toast.makeText(this.getContext(),"Error: "+ e.getMessage(), Toast.LENGTH_LONG).show();
             return null;
         }
+    }
 
+    private class onClickButton implements View.OnClickListener {
+        @Override
+        public void onClick(View v) {
+            try {
+                switch (v.getId()) {
+                    case R.id.btnEliminarPedidosEnviados_resumen:
+                        //Buscar Pedidos Enviados
+                        PedidoController pc = new PedidoController(getContext());
 
+                            ArrayList<Pedido> listadoPedidos = pc.abrir().findByEstadoId_ArrayList(GlobalValues.getINSTANCIA().consPedidoEstadoEnviado);
+                            for (Pedido pedido : listadoPedidos)
+                            {
+                                pc.abrir().deleteByIdTmp(pedido.getIdTmp());
+                                pc.cerrar();
+                            }
+                            Toast.makeText(getContext(), "Pedidos Enviados, Eliminados Correctamente!",Toast.LENGTH_LONG).show();
+                        break;
+                }
+            }catch(Exception e ){
+                Log.println(Log.ERROR,"ErrorHelper:",e.getMessage());
+            }
+        }
     }
 
     // TODO: Rename method, update argument and hook method into UI event

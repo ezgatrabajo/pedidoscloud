@@ -86,7 +86,6 @@ public class ConfigFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-
         View vista = inflater.inflate(R.layout.fragment_config, container, false);
 
 
@@ -107,9 +106,7 @@ public class ConfigFragment extends Fragment {
             }
         });
 
-        //Botones Si y NO
-        tb = (ToggleButton) vista.findViewById(R.id.toggleButtonStockPrecios);
-        tbEnvioPedidos = (ToggleButton) vista.findViewById(R.id.toggleButtonEnvioPedidos);
+
 
         //Chequear Servicio Stock Precios
         ParameterHelper ph = new ParameterHelper(getContext());

@@ -51,7 +51,7 @@ public class ListadoProductosFragment extends Fragment {
     //Variables
     private RecyclerView rvProductos;
     private RecyclerView.Adapter mAdapter;
-
+    private  ArrayList<Producto> arrayOfProductos = new ArrayList<Producto>();
 
 
 
@@ -115,27 +115,16 @@ public class ListadoProductosFragment extends Fragment {
             TextView txtTitleProductos = (TextView) vista.findViewById(R.id.txtTitleProductos);
             txtTitleProductos.setText("Listado de Productos");
             ProductoController dbHelper = new ProductoController(vista.getContext());
-            ArrayList<Producto> arrayOfProductos = new ArrayList<Producto>();
+            arrayOfProductos = new ArrayList<Producto>();
             String datos = "";
             Producto p2;
 
-
-            //SI NO SE REALIZO EL FILTRO, se muestran todos
+            //Chequea Filtro de texto o Voz, SI NO SE REALIZO EL FILTRO, se muestran todos
             if (getCursorProductos()== null){
-                //checkServiceWorking();
-                cursorProductos = dbHelper.abrir().obtenerTodos();
-                dbHelper.cerrar();
-                for(cursorProductos.moveToFirst(); !cursorProductos.isAfterLast(); cursorProductos.moveToNext()) {
-                    Integer id = cursorProductos.getInt(cursorProductos.getColumnIndex(MarcaDataBaseHelper.CAMPO_ID));
-                    //checkServiceWorking();
-                    p2 = dbHelper.abrir().buscar(id);
-                    dbHelper.cerrar();
-
-                    arrayOfProductos.add(p2);
-                    p2 = null;
-                }
+                arrayOfProductos = cargarListadoTodosProductos();
             }
 
+            //Chequea Filtro de Memo, si entro por Recordatorio
             if(GlobalValues.getINSTANCIA().IS_MEMO){
                 ClienteController cc = new ClienteController(this.getContext());
                 Cliente c = cc.abrir().buscar(GlobalValues.getINSTANCIA().CLIENTE_ID_PEDIDO_ACTUAL);
@@ -146,8 +135,12 @@ public class ListadoProductosFragment extends Fragment {
                 GlobalValues.getINSTANCIA().IS_MEMO = false;
             }
 
-
-
+            //Si todavia listado de productos esta vacio, se carga con todos
+            if (arrayOfProductos == null){
+                if (arrayOfProductos.size() < 1 ){
+                    arrayOfProductos = cargarListadoTodosProductos();
+                }
+            }
 
             //Con RECYCLEVIEW
             rvProductos = (RecyclerView)vista.findViewById(R.id.rvProductos);
@@ -168,6 +161,27 @@ public class ListadoProductosFragment extends Fragment {
         }
             return vista;
     }
+
+    public ArrayList<Producto> cargarListadoTodosProductos(){
+        try{
+            ProductoController dbHelper = new ProductoController(getContext());
+            cursorProductos = dbHelper.abrir().obtenerTodos();
+            dbHelper.cerrar();
+            arrayOfProductos = new ArrayList<Producto>();
+
+            for(cursorProductos.moveToFirst(); !cursorProductos.isAfterLast(); cursorProductos.moveToNext()) {
+                Integer id = cursorProductos.getInt(cursorProductos.getColumnIndex(MarcaDataBaseHelper.CAMPO_ID));
+                Producto p2 = dbHelper.abrir().buscar(id);
+                dbHelper.cerrar();
+                arrayOfProductos.add(p2);
+            }
+            return arrayOfProductos;
+        }catch (Exception e ){
+            Toast.makeText(getContext(), "Error: " +e.getMessage().toString(), Toast.LENGTH_SHORT).show();
+            return null;
+        }
+    }
+
 
     // TODO: Rename method, update argument and hook method into UI event
     public void onButtonPressed(Uri uri) {

@@ -85,25 +85,6 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         <TableRow
             android:layout_marginTop="40dp"
             android:layout_width="match_parent"
@@ -146,6 +127,22 @@
                 android:textSize="25dp"
                 />
         </TableRow>
+
+
+
+        <TableRow
+            android:layout_marginTop="40dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <Button
+                android:id="@+id/btnEliminarPedidosEnviados_resumen"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="Eliminar Pedidos Enviados"
+                />
+        </TableRow>
+
 
 
     </TableLayout>
