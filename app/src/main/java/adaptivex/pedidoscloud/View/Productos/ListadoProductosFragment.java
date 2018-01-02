@@ -137,9 +137,10 @@ public class ListadoProductosFragment extends Fragment {
 
             //Si todavia listado de productos esta vacio, se carga con todos
             if (arrayOfProductos == null){
-                if (arrayOfProductos.size() < 1 ){
-                    arrayOfProductos = cargarListadoTodosProductos();
-                }
+                arrayOfProductos = cargarListadoTodosProductos();
+            }
+            if (arrayOfProductos.size() < 1 ){
+                arrayOfProductos = cargarListadoTodosProductos();
             }
 
             //Con RECYCLEVIEW
