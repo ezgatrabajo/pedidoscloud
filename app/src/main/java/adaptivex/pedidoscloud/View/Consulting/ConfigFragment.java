@@ -14,6 +14,7 @@ import android.widget.ToggleButton;
 
 import adaptivex.pedidoscloud.Config.GlobalValues;
 import adaptivex.pedidoscloud.Controller.ParameterController;
+import adaptivex.pedidoscloud.Core.IniciarApp;
 import adaptivex.pedidoscloud.Core.ParameterHelper;
 import adaptivex.pedidoscloud.Model.Parameter;
 import adaptivex.pedidoscloud.R;
@@ -88,7 +89,7 @@ public class ConfigFragment extends Fragment {
         // Inflate the layout for this fragment
         View vista = inflater.inflate(R.layout.fragment_config, container, false);
 
-
+        Button btnDescargarBaseDatos = (Button) vista.findViewById(R.id.btnDescargarBaseDatos);
         Button btnRecordatorio = (Button) vista.findViewById(R.id.btnDescargarRecordatorio);
         tbActStockPrecios  = (ToggleButton) vista.findViewById(R.id.toggleButtonStockPrecios);
 
@@ -114,11 +115,22 @@ public class ConfigFragment extends Fragment {
         tbActStockPrecios.setChecked(ph.isStockPrecios());
         tbActStockPrecios.setOnClickListener( new ClickListenerToggleButton());
 
+        btnDescargarBaseDatos.setOnClickListener(new ClickListenerDescargarBaseDatos());
+
         //Chequear Servicio Envio de Pedidos
         //tbEnvioPedidos.setChecked(ph.isEnvioPedidos());
         //tbEnvioPedidos.setOnClickListener(new ClickListenerToggleButton());
 
         return vista;
+    }
+
+    private class ClickListenerDescargarBaseDatos implements View.OnClickListener{
+
+        @Override
+        public void onClick(View v) {
+            IniciarApp ia = new IniciarApp(getContext());
+            ia.downloadDatabase();
+        }
     }
 
     private class ClickListenerToggleButton implements View.OnClickListener {
