@@ -26,6 +26,12 @@ public class User {
         return username;
     }
 
+    public String getUserDescription(){
+        return getUsername() + " (" + getEmail() + ")";
+
+    }
+
+
     public void setUsername(String username) {
         this.username = username;
     }

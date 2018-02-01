@@ -42,9 +42,6 @@ public class UserParser {
                 JSONObject empresa = new JSONObject(data.getString(UserDataBaseHelper.EMPRESA_JSON));
                 vuser.setEntidad_id(empresa.getInt(UserDataBaseHelper.EMPRESA_ID_JSON));
 
-                //JSONObject empleado = new JSONObject(data.getString(UserDataBaseHelper.EMPLEADO_JSON));
-                //vuser.setEmpleado_id(empleado.getInt(UserDataBaseHelper.EMPLEADO_ID_JSON));
-
                 setUser(vuser);
             }else {
                 Log.d("UserParser: ", "Status: " + getStatus().toString());

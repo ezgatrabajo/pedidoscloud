@@ -59,15 +59,17 @@ public class ParameterHelper {
                 p.setValor_texto("N");
                 pc.abrir().agregar(p);
                 pc.cerrar();
-            }
-            //Si parametro es Y, se debe activar el servicio
-            if (p.getValor_texto().equals("Y")) {
+            }else{
+                //Si parametro es Y, se debe activar el servicio
+                if (p.getValor_texto().equals("Y")) {
+                    resultado = true;
+                };
 
-                resultado = true;
-            };
+            }
             return resultado;
         }catch(Exception e ){
             Toast.makeText(ctx,"Error: " + e.getMessage().toString(),Toast.LENGTH_LONG).show();
+
             return false;
         }
     }

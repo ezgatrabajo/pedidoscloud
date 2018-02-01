@@ -104,7 +104,7 @@ public class ResumenFragment extends Fragment {
                 tvPedidosEnviados.setText(pedidosEnviados);
 
                 TextView tvUserLogued = (TextView) vista.findViewById(R.id.tvUserLogued);
-                usuarioLogueado = GlobalValues.getINSTANCIA().getUserlogued().getEmail();
+                usuarioLogueado = GlobalValues.getINSTANCIA().getUserlogued().getUserDescription();
                 tvUserLogued.setText(usuarioLogueado);
 
                 Integer cantidadclientes = clienteCtr.abrir().obtenerTodos().getCount();

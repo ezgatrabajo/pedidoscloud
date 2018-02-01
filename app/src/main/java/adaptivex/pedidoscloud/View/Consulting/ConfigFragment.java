@@ -40,7 +40,7 @@ public class ConfigFragment extends Fragment {
     private String mParam2;
 
     private OnFragmentInteractionListener mListener;
-    protected ToggleButton tb;
+    protected ToggleButton tbActStockPrecios;
     protected ToggleButton tbEnvioPedidos;
     protected Intent intentServiceStockPrecios;
     protected Intent intentServiceEnvioPedidos;
@@ -90,6 +90,7 @@ public class ConfigFragment extends Fragment {
 
 
         Button btnRecordatorio = (Button) vista.findViewById(R.id.btnDescargarRecordatorio);
+        tbActStockPrecios  = (ToggleButton) vista.findViewById(R.id.toggleButtonStockPrecios);
 
         intentServiceStockPrecios = new Intent(getContext(), IntentServiceStockPrecios.class);
         intentServiceEnvioPedidos = new Intent(getContext(), IntentServiceEnvioPedidos.class);
@@ -110,12 +111,12 @@ public class ConfigFragment extends Fragment {
 
         //Chequear Servicio Stock Precios
         ParameterHelper ph = new ParameterHelper(getContext());
-        tb.setChecked(ph.isStockPrecios());
-        tb.setOnClickListener( new ClickListenerToggleButton());
+        tbActStockPrecios.setChecked(ph.isStockPrecios());
+        tbActStockPrecios.setOnClickListener( new ClickListenerToggleButton());
 
         //Chequear Servicio Envio de Pedidos
-        tbEnvioPedidos.setChecked(ph.isEnvioPedidos());
-        tbEnvioPedidos.setOnClickListener(new ClickListenerToggleButton());
+        //tbEnvioPedidos.setChecked(ph.isEnvioPedidos());
+        //tbEnvioPedidos.setOnClickListener(new ClickListenerToggleButton());
 
         return vista;
     }
@@ -135,7 +136,7 @@ public class ConfigFragment extends Fragment {
                 switch (v.getId()) {
                     //StockPrecios
                     case R.id.toggleButtonStockPrecios:
-                        if (tb.isChecked()) {
+                        if (tbActStockPrecios.isChecked()) {
                             if (p != null) {
                                 p.setValor_texto("Y");
                                 pc.abrir().modificar(p);

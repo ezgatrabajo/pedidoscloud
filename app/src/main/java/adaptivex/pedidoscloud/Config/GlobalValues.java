@@ -87,6 +87,7 @@ public class GlobalValues {
     public static final int PARAM_EMPRESA_ID = 10;
     public static final int PARAM_DOWNLOAD_DATABASE = 11;
     public static final int PARAM_SERVICE_ENVIO_PEDIDOS_ACTIVATE = 12;
+    public static final int PARAM_USERNAME = 13;
 
 
 
@@ -213,6 +214,7 @@ public class GlobalValues {
     public void setUserlogued(User userlogued) {
         this.userlogued = userlogued;
     }
+
 
 
 }

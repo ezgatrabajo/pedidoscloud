@@ -180,12 +180,27 @@ public  class IniciarApp  {
                 if (p.getValor_texto()!=""){
                     //CARGAR USUARIO RECORDADO
                     user.setEmail(p.getValor_texto());
+
                     p = pc.abrir().findById(GlobalValues.getINSTANCIA().PARAM_USERID);
-                    user.setId(p.getValor_integer());
+                    if (p!=null){
+                        user.setId(p.getValor_integer());
+                    }
+
+                    p = pc.abrir().findById(GlobalValues.getINSTANCIA().PARAM_USERNAME);
+                    if (p!=null) {
+                        user.setUsername(p.getValor_texto());
+                    }
+
                     p = pc.abrir().findById(GlobalValues.getINSTANCIA().PARAM_ENTIDADID);
-                    user.setEntidad_id(p.getValor_integer());
+                    if (p!=null) {
+                        user.setEntidad_id(p.getValor_integer());
+                    }
+
                     p = pc.abrir().findById(GlobalValues.getINSTANCIA().PARAM_GROUPID);
-                    user.setGroup_id(p.getValor_integer());
+                    if (p!=null){
+                        user.setGroup_id(p.getValor_integer());
+                    }
+
                     GlobalValues.getINSTANCIA().setUserlogued(user);
                     return true;
                 }else{
@@ -202,61 +217,110 @@ public  class IniciarApp  {
 
     public boolean loginRememberr(User user){
         /* Lee parametros, y los setea con el valor del usuario. Si no existen, los crea */
-        try{
+
             //ParameterController pc = new ParameterController(this.getContext());
             ParameterController pc = new ParameterController(this.getContext());
             //SETEO DE USERID
             Parameter p = new Parameter();
             p = pc.abrir().findById(GlobalValues.getINSTANCIA().PARAM_USERID);
-            if (p==null){
+            if (p==null) {
                 p = new Parameter();
                 p.setId(GlobalValues.getINSTANCIA().PARAM_USERID);
                 p.setValor_integer(user.getId());
                 p.setDescripcion("Es el Id de usuario en el sistema web");
                 pc.abrir().agregar(p);
                 pc.cerrar();
+            }else{
+                p.setId(GlobalValues.getINSTANCIA().PARAM_USERID);
+                p.setValor_integer(user.getId());
+                p.setDescripcion("Es el Id de usuario en el sistema web");
+                pc.abrir().modificar(p);
+                pc.cerrar();
             }
+
+
 
             //SETEO DE ENTIDADID
             p = new Parameter();
             p = pc.abrir().findById(GlobalValues.getINSTANCIA().PARAM_ENTIDADID);
-            if (p==null){
+            if (p==null) {
                 p = new Parameter();
                 p.setId(GlobalValues.getINSTANCIA().PARAM_ENTIDADID);
                 p.setValor_integer(user.getEntidad_id());
                 p.setDescripcion("Es el Id de Empresa de usuario en el sistema web");
                 pc.abrir().agregar(p);
                 pc.cerrar();
+            }else{
+                p.setId(GlobalValues.getINSTANCIA().PARAM_ENTIDADID);
+                p.setValor_integer(user.getEntidad_id());
+                p.setDescripcion("Es el Id de Empresa de usuario en el sistema web");
+                pc.abrir().modificar(p);
+                pc.cerrar();
             }
+
+
 
             //SETEO DE EMAIL
             p = new Parameter();
             p = pc.abrir().findById(GlobalValues.getINSTANCIA().PARAM_EMAIL);
-            if (p==null){
+            if (p==null) {
                 p = new Parameter();
                 p.setId(GlobalValues.getINSTANCIA().PARAM_EMAIL);
                 p.setValor_texto(user.getEmail());
                 p.setDescripcion("Es el EMAIL de Empresa de usuario en el sistema web");
                 pc.abrir().agregar(p);
                 pc.cerrar();
+            }else{
+                p.setId(GlobalValues.getINSTANCIA().PARAM_EMAIL);
+                p.setValor_texto(user.getEmail());
+                p.setDescripcion("Es el EMAIL de Empresa de usuario en el sistema web");
+                pc.abrir().modificar(p);
+                pc.cerrar();
             }
+
+
 
             //SETEO DE GROUPID
             p = new Parameter();
             p = pc.abrir().findById(GlobalValues.getINSTANCIA().PARAM_GROUPID);
-            if (p==null){
+            if (p==null) {
                 p = new Parameter();
                 p.setId(GlobalValues.getINSTANCIA().PARAM_GROUPID);
                 p.setValor_integer(user.getGroup_id());
                 p.setDescripcion("Es el Id de GRUPO de usuario  o sea el rol en el sistema web");
                 pc.abrir().agregar(p);
                 pc.cerrar();
+            }else{
+                p.setId(GlobalValues.getINSTANCIA().PARAM_GROUPID);
+                p.setValor_integer(user.getGroup_id());
+                p.setDescripcion("Es el Id de GRUPO de usuario  o sea el rol en el sistema web");
+                pc.abrir().modificar(p);
+                pc.cerrar();
             }
+
+
+
+            p = pc.abrir().findById(GlobalValues.getINSTANCIA().PARAM_USERNAME);
+            if (p==null) {
+                p = new Parameter();
+                p.setId(GlobalValues.getINSTANCIA().PARAM_USERNAME);
+                p.setValor_texto(user.getUsername());
+                p.setDescripcion("Es el username en el sistema web");
+                pc.abrir().agregar(p);
+                pc.cerrar();
+            }else{
+                p.setId(GlobalValues.getINSTANCIA().PARAM_USERNAME);
+                p.setValor_texto(user.getUsername());
+                p.setDescripcion("Es el username en el sistema web");
+                pc.abrir().modificar(p);
+                pc.cerrar();
+
+            }
+
+
+
             return true;
-        }catch(Exception e){
-            Log.d("IniciarApp", e.getMessage());
-            return false;
-        }
+
     }
 
     public boolean crearParametersLogin(){
