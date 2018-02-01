@@ -112,6 +112,10 @@ public class DetallePedidoFragment extends Fragment implements  View.OnClickList
         btnEnviarPedido =(Button)vista.findViewById(R.id.btnEnviarPedido2);
         btnEnviarPedido.setOnClickListener(this);
 
+        if (pedido.getEstadoId()==GlobalValues.getINSTANCIA().ESTADO_ENVIADO){
+            btnEnviarPedido.setEnabled(false);
+        }
+
         //Cargar Valores a referencias
         tvDpfId.setText(String.valueOf(pedido.getId()));
         tvDpfIdTmp.setText(String.valueOf(pedido.getIdTmp()));
@@ -215,11 +219,17 @@ public class DetallePedidoFragment extends Fragment implements  View.OnClickList
             try{
                 HelperPedidos hp = new HelperPedidos(view.getContext(), Long.valueOf(this.tvDpfIdTmp.getText().toString()), GlobalValues.getINSTANCIA().ENVIAR_PEDIDO);
                 hp.execute();
-                sleep(1000);
+                sleep(1500);
                 PedidoController pc = new PedidoController(this.getContext());
                 Pedido p = pc.abrir().buscar(Long.valueOf(this.tvDpfIdTmp.getText().toString()),true);
                 tvDpfEstadoDesc.setText(String.valueOf(GlobalValues.getINSTANCIA().ESTADOS[p.getEstadoId()]));
                 tvDpfId.setText(String.valueOf(p.getId()));
+                Button btnEnviar = (Button) view.findViewById(R.id.btnEnviarPedido2);
+                if (p.getEstadoId()==GlobalValues.getINSTANCIA().ESTADO_ENVIADO){
+                    btnEnviar.setEnabled(false);
+                }
+
+
 
             }catch (Exception e){
                 Toast.makeText(view.getContext(),"Error RVAdapterPedido: "+ e.getMessage(), Toast.LENGTH_LONG);
