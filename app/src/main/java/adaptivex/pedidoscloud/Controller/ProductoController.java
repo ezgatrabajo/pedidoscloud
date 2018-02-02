@@ -40,6 +40,16 @@ public class ProductoController
         }
     }
 
+    public Integer count(){
+        try{
+            return abrir().obtenerTodos().getCount();
+        }catch(Exception e ){
+            Log.d("Productos:", e.getMessage());
+            return null;
+        }
+
+    }
+
     public long agregar(Producto item)
     {
         //checkServiceWorking();

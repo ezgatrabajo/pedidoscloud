@@ -30,6 +30,7 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -77,47 +78,56 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-
-        IniciarApp ia = new IniciarApp(this.getBaseContext());
-        if (!ia.isInstalled()){
-            ia.iniciarBD();
-        }
-
-        if(ia.isLoginRememberr()){
-            Intent i = new Intent(this.getBaseContext(), MainActivity.class);
-            startActivity(i);
-            finish();
-        }
+        try{
 
 
-        chkRecordarme = (CheckBox) findViewById(R.id.chkRecordarme);
+            IniciarApp ia = new IniciarApp(this.getBaseContext());
+            if (!ia.isInstalled()){
+                ia.iniciarBD();
+            }
 
-        // Set up the login form.
-        mEmailView = (AutoCompleteTextView) findViewById(R.id.email);
-        populateAutoComplete();
 
-        mPasswordView = (EditText) findViewById(R.id.password);
-        mPasswordView.setOnEditorActionListener(new TextView.OnEditorActionListener() {
-            @Override
-            public boolean onEditorAction(TextView textView, int id, KeyEvent keyEvent) {
-                if (id == R.id.login || id == EditorInfo.IME_NULL) {
-                    attemptLogin();
-                    return true;
+            if(ia.isLoginRememberr()){
+                Intent i = new Intent(this.getBaseContext(), MainActivity.class);
+                startActivity(i);
+                finish();
+            }
+
+
+            chkRecordarme = (CheckBox) findViewById(R.id.chkRecordarme);
+
+            // Set up the login form.
+            mEmailView = (AutoCompleteTextView) findViewById(R.id.email);
+            populateAutoComplete();
+
+            mPasswordView = (EditText) findViewById(R.id.password);
+            mPasswordView.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+                @Override
+                public boolean onEditorAction(TextView textView, int id, KeyEvent keyEvent) {
+                    if (id == R.id.login || id == EditorInfo.IME_NULL) {
+                        attemptLogin();
+                        return true;
+                    }
+                    return false;
                 }
-                return false;
-            }
-        });
+            });
 
-        Button mEmailSignInButton = (Button) findViewById(R.id.email_sign_in_button);
-        mEmailSignInButton.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                attemptLogin();
-            }
-        });
+            Button mEmailSignInButton = (Button) findViewById(R.id.email_sign_in_button);
+            mEmailSignInButton.setOnClickListener(new OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    attemptLogin();
+                }
+            });
 
-        mLoginFormView = findViewById(R.id.login_form);
-        mProgressView = findViewById(R.id.login_progress);
+            mLoginFormView = findViewById(R.id.login_form);
+            mProgressView = findViewById(R.id.login_progress);
+        }catch(Exception e){
+            Toast.makeText(this, "Error: " + e.getMessage(), Toast.LENGTH_LONG).show();
+        }
+
+
+
     }
 
     private void populateAutoComplete() {
@@ -380,6 +390,9 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                     IniciarApp ia = new IniciarApp(this.getCtx());
                     if (!ia.isInstalled()){
                         ia.iniciarBD();
+                    }
+
+                    if (!ia.isDatabaseDownload()){
                         ia.downloadDatabase();
                     }
                     //SI NO ESTA GUARDADO EL REMEMBER, SE GUARDA

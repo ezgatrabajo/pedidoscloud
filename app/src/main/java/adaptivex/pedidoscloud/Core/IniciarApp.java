@@ -10,7 +10,9 @@ import android.util.Log;
 import android.widget.Toast;
 
 import adaptivex.pedidoscloud.Config.GlobalValues;
+import adaptivex.pedidoscloud.Controller.ClienteController;
 import adaptivex.pedidoscloud.Controller.ParameterController;
+import adaptivex.pedidoscloud.Controller.ProductoController;
 import adaptivex.pedidoscloud.Model.CategoriaDataBaseHelper;
 import adaptivex.pedidoscloud.Model.ClienteDataBaseHelper;
 import adaptivex.pedidoscloud.Model.HojarutaDataBaseHelper;
@@ -382,23 +384,37 @@ public  class IniciarApp  {
             return false;
         }
     }
+    public boolean isDatabaseDownload(){
+        try {
+            boolean respuesta = false;
+            ClienteController cc = new ClienteController(getContext());
+            ProductoController proc = new ProductoController(getContext());
+            if (cc.count() < 1 || proc.count() < 1) {
+                respuesta = false;
+            } else {
+                respuesta = true;
+            }
+            return respuesta;
+        }catch(Exception e ){
+            Log.d("IniciarApp", e.getMessage());
+            return false;
+        }
+
+    }
     public boolean isInstalled(){
         //Leer Archivo de sistema el parametro INSTALLED
-        try{
+        try {
             ParameterController pc = new ParameterController(getContext());
             Parameter p = new Parameter();
             p = pc.abrir().findById(GlobalValues.getINSTANCIA().PARAM_INSTALLED);
-            String valor = "Y";
-            if (p!=null){
-                    return true;
-                }else{
-                    return false;
+            boolean respuesta = false;
+            if (p != null) {
+                if (p.getValor_texto().equals("Y")) {
+                    respuesta = true;
+
+                }
             }
-
-            //SystemFileHelper sf = new SystemFileHelper(getContext(),GlobalValues.getINSTANCIA().PARAM_CONFIGFILE);
-            //sf.blanquearConfig();
-            //if (sf.readData(GlobalValues.getINSTANCIA().PARAM_INSTALLED)=="Y") return true; else return false;
-
+            return respuesta;
         }catch(Exception e ){
             Log.d("IniciarApp", e.getMessage());
             return false;
