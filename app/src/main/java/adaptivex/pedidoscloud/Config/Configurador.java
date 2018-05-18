@@ -33,9 +33,14 @@ public class Configurador {
     public static String urlHojarutas =strRoot+"/api/hojarutas";
     public static String urlHojarutadetalles = strRoot+"/api/hojarutadetalles";
     public static String urlPostPedido =strRoot+"/api/pedido/add";
+    public static String urlPedidoFindById =strRoot+"/api/pedido/findbyid";
     public static String urlPostPedidodetalle =strRoot+"/api/pedidodetallessend";
     public static String urlPostClientes = strRoot+"/api/clientes";
     public static String urlPostLogin = strRoot+"/api/user/login";
+    public static String urlPostRegister = strRoot+"/api/user/register";
+    public static String urlPostUpdateUser = strRoot+"/api/user/register";
+    public static String urlPromos = strRoot+"/api/promos";
+    public static String urlParameters = strRoot+"/api/parametros";
 
 
     public  static Configurador getConfigurador() {

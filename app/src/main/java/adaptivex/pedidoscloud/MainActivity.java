@@ -26,9 +26,7 @@ import adaptivex.pedidoscloud.Model.Cliente;
 import adaptivex.pedidoscloud.Model.Hojaruta;
 import adaptivex.pedidoscloud.Model.Pedido;
 import adaptivex.pedidoscloud.Model.Producto;
-import adaptivex.pedidoscloud.Servicios.HelperMemo;
 import adaptivex.pedidoscloud.Servicios.HelperPedidos;
-import adaptivex.pedidoscloud.Servicios.HelperProductos;
 import adaptivex.pedidoscloud.Servicios.IntentServiceStockPrecios;
 import adaptivex.pedidoscloud.View.Categorias.ListadoCategoriasFragment;
 import adaptivex.pedidoscloud.View.Clientes.ListadoClientesFragment;
@@ -105,8 +103,7 @@ public class MainActivity extends AppCompatActivity
     @Override
     public void onResume() {
         super.onResume();
-        IniciarApp ia = new IniciarApp(this.getBaseContext());
-        ia.isLoginRememberr();
+
     }
 
     @Override

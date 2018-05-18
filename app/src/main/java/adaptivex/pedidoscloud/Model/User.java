@@ -1,5 +1,7 @@
 package adaptivex.pedidoscloud.Model;
 
+import adaptivex.pedidoscloud.Core.WorkString;
+
 /**
  * Created by ezequiel on 23/05/2016.
  */
@@ -11,6 +13,16 @@ public class User {
     private int entidad_id;
     private int group_id;
     private int empleado_id;
+
+    private String telefono;
+    private String localidad;
+    private String calle;
+    private String nro;
+    private String piso;
+    private String contacto;
+
+    private String logued;
+    private Integer id_android;
 
     private static String createTable;
 
@@ -85,11 +97,76 @@ public class User {
         this.group_id = group_id;
     }
 
-    public int getEmpleado_id() {
-        return empleado_id;
+
+
+    public String getLocalidad() {
+        return WorkString.getTexto(localidad);
     }
 
-    public void setEmpleado_id(int empleado_id) {
-        this.empleado_id = empleado_id;
+    public void setLocalidad(String localidad) {
+        this.localidad = localidad;
+    }
+
+    public String getCalle() {
+        return WorkString.getTexto(calle);
+    }
+
+    public void setCalle(String calle) {
+        this.calle = calle;
+    }
+
+    public String getNro() {
+        if (nro==null) nro = "";
+        return nro;
+    }
+
+    public void setNro(String nro) {
+        this.nro = nro;
+    }
+
+    public String getPiso() {
+        if (piso==null) piso = "";
+        return piso;
+    }
+
+    public void setPiso(String piso) {
+        this.piso = piso;
+    }
+
+    public String getContacto() {
+        if (contacto==null){
+            contacto = "";
+        }
+        return contacto;
+    }
+
+    public void setContacto(String contacto) {
+        this.contacto = contacto;
+    }
+
+    public String getTelefono() {
+
+        return WorkString.getTexto(telefono);
+    }
+
+    public void setTelefono(String telefono) {
+        this.telefono = telefono;
+    }
+
+
+    public String getLogued() {
+        return logued;
+    }
+
+    public void setLogued(String logued) {
+        this.logued = logued;
+    }
+
+    public Integer getId_android() {
+        return id_android;
+    }
+
+    public void setId_android(Integer id_android) {
+        this.id_android = id_android;
     }
 }

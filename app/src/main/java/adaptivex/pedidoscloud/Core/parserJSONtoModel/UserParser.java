@@ -2,10 +2,10 @@ package adaptivex.pedidoscloud.Core.parserJSONtoModel;
 
 import android.util.Log;
 
+import org.json.JSONObject;
+
 import adaptivex.pedidoscloud.Model.User;
 import adaptivex.pedidoscloud.Model.UserDataBaseHelper;
-
-import org.json.JSONObject;
 
 /**
  * Created by ezequiel on 16/8/2017.
@@ -25,28 +25,39 @@ public class UserParser {
         this.user = new User();
     }
 
-    public User parsearRespuesta(){
+    public User parsearRespuesta(String json){
+
         try{
-            JSONObject object = new JSONObject(getStrJson());
+            JSONObject object = new JSONObject(json);
             setStatus(object.getString("code"));
             setMessage( object.getString("message"));
-            JSONObject data = new JSONObject(object.getString("data"));
-            setData(data);
 
             if (Integer.parseInt(getStatus())== 200){
                 User vuser = new User();
+                JSONObject data = new JSONObject(object.getString("data"));
+                setData(data);
+
                 vuser.setId(data.getInt(UserDataBaseHelper.ID));
                 vuser.setUsername(data.getString(UserDataBaseHelper.USERNAME));
                 vuser.setEmail(data.getString(UserDataBaseHelper.EMAIL));
 
-                JSONObject empresa = new JSONObject(data.getString(UserDataBaseHelper.EMPRESA_JSON));
-                vuser.setEntidad_id(empresa.getInt(UserDataBaseHelper.EMPRESA_ID_JSON));
 
+                if (data.has(UserDataBaseHelper.TELEFONO)) vuser.setTelefono(data.getString(UserDataBaseHelper.TELEFONO)); else vuser.setTelefono("");
+                if (data.has(UserDataBaseHelper.LOCALIDAD)) vuser.setLocalidad(data.getString(UserDataBaseHelper.LOCALIDAD)); else vuser.setLocalidad("");
+                if (data.has(UserDataBaseHelper.CALLE)) vuser.setCalle(data.getString(UserDataBaseHelper.CALLE)); else vuser.setCalle("");
+                if (data.has(UserDataBaseHelper.NRO)) vuser.setNro(data.getString(UserDataBaseHelper.NRO)); else vuser.setNro("");
+                if (data.has(UserDataBaseHelper.PISO)) vuser.setPiso(data.getString(UserDataBaseHelper.PISO)); else vuser.setPiso("");
+                if (data.has(UserDataBaseHelper.CONTACTO)) vuser.setContacto(data.getString(UserDataBaseHelper.CONTACTO)); else vuser.setContacto("");
                 setUser(vuser);
+
             }else {
-                Log.d("UserParser: ", "Status: " + getStatus().toString());
+                Log.e("UserParser: ", "Status: " + getStatus().toString());
+                Log.e("UserParser: ", "Status: " + getMessage().toString());
+
             }
         }catch(Exception e ){
+            setStatus("500");
+            setMessage(e.getMessage());
             Log.d("UserParserError: ", e.getMessage().toString());
         }
 

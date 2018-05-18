@@ -86,13 +86,11 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                 ia.iniciarBD();
             }
 
-
-            if(ia.isLoginRememberr()){
+            if(ia.isLoginRemember()){
                 Intent i = new Intent(this.getBaseContext(), MainActivity.class);
                 startActivity(i);
                 finish();
             }
-
 
             chkRecordarme = (CheckBox) findViewById(R.id.chkRecordarme);
 
@@ -366,7 +364,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                 WebRequest webreq = new WebRequest();
                 String jsonStr = webreq.makeWebServiceCall(Configurador.urlPostLogin, WebRequest.POST, registro);
                 parser.setStrJson(jsonStr);
-                parser.parsearRespuesta();
+                parser.parsearRespuesta(jsonStr);
 
             } catch (Exception e) {
                 Log.d("LoginActivity1:", e.getMessage());
@@ -397,7 +395,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                     }
                     //SI NO ESTA GUARDADO EL REMEMBER, SE GUARDA
                     if(chkRecordarme.isChecked()){
-                        ia.loginRememberr(GlobalValues.getINSTANCIA().getUserlogued());
+                        ia.loginRemember(GlobalValues.getINSTANCIA().getUserlogued());
                     };
 
                     Intent i = new Intent(this.getCtx(), MainActivity.class);
